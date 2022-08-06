@@ -1,0 +1,57 @@
+<%= form_with(model: movie) do |form| %>
+  <% if movie.errors.any? %>
+    <div style="color: red">
+      <h2>Foi encontrado <%= movie.errors.count %> erro:</h2>
+
+      <ul>
+        <% movie.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='form-group'>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title, class: "dark-gray-5 form-control" %>
+  </div>
+
+  <div class='grid-filme'>
+      <div class="form-group" style= "margin-right: 20px; margin-top: 20px">
+        <%= form.label :cover_url%>
+        <%= form.text_field :cover_url, class: "dark-gray-5 form-control" %>
+      </div>
+
+      <div class="form-group" style= "margin-top: 20px">
+        <%= form.label :published_at, style: "display: block" %>
+        <%= form.date_field :published_at, class: "dark-gray-5 form-control" %>
+      </div>
+
+      <div class="form-group" style= "margin-right: 20px; margin-top: 20px">
+        <%= form.label :genre_id, style: "display: block" %>
+        <%= form.collection_select(:genre_id, Genre.all, :id, :name, {:prompt => "Selecione"}, class: "dark-gray-5 form-control") %>
+      </div>
+
+      <div class="form-group" style= "margin-top: 20px">
+        <%= form.label :director_id, style: "display: block" %>
+        <%= form.collection_select(:director_id, Director.all, :id, :name, {:prompt => "Selecione"}, class: "dark-gray-5 form-control") %>
+      </div>
+    </div>
+
+  <div class='form-group' style= "margin-top: 20px">
+    <%= form.label :sinopse, style: "display: block" %>
+    <%= form.text_field :sinopse, class: "dark-gray-5 form-control" %>
+  </div>
+
+  <div class='form-group' style= "margin-top: 20px">
+    <%= form.label :cast_id, style: "display: block" %>
+    <%= form.collection_select(:cast_id, Artist.all, :id, :name, {:prompt => "Selecione"}, class: "dark-gray-5 form-control") %>
+  </div>
+
+  <div class="btn-right">
+    <%= link_to "Cancelar", movies_path, class: "btn cancel btn-right" %>
+    <%= form.submit "Salvar", class: "btn primary btn-right" do %>
+    <%= link_to movie_path %>
+    <% end %>
+  </div>
+<% end %>

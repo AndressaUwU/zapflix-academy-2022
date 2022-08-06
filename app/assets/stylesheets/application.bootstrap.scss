@@ -19,10 +19,73 @@ main {
   overflow-y: hidden;
 }
 
+.span {
+  text-decoration: underline;
+  text-decoration: none;
+}
+
+.button {
+  text-decoration: underline;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 8px;
+  border-color: #FF375F;
+  background-color: #FF375F;
+  border: none;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '+';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-left: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+
 .bi {
   vertical-align: -.125em;
   pointer-events: none;
   fill: currentColor;
+}
+
+.btn-right {
+  display: flex !important;
+  justify-content: end;
+  padding: right;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 0px;
+  margin-left: 10px;
+}
+
+.grid-filme {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 #sideBarWrapper {
@@ -90,6 +153,7 @@ form .form-check-input:checked {
 }
 
 .cancel {
+  margin: 5px;
   color: #2C2C2E !important;
   background-color: #C7C7CC !important;
 }

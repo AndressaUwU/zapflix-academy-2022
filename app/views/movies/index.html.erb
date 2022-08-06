@@ -1,0 +1,36 @@
+<style>
+.right {
+   float: right;
+  right: 0px;
+}
+</style>
+<div id="movies">
+  <h1>Filmes
+  <%= link_to new_movie_path, class: 'primary span' do %>
+  <button class="right text-white button" style="vertical-align:middle">
+  <span>Novo</span>
+  </button>
+  <% end %>
+  </h1>
+  <br>
+</div>
+<table class="table">
+  <thead>
+  <div class="container">
+    <div class="row">
+      <tr>
+        <th class="col-md-3" scope="col">Título</th>
+        <th class="col-md-3" scope="col">Diretor</th>
+        <th class="col-md-3" scope="col">Gênero</th>
+        <th class="col-md-3" scope="col">Estreia</th>
+        <th class="col-md-3" style="text-align: right"scope="col" >Ações</th>
+      </tr>
+    </div>
+  </div>
+  </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+    <%= render movie %>
+    <% end %>
+  </tbody>
+</table>

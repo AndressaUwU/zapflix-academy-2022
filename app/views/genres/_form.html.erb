@@ -1,0 +1,25 @@
+<%= form_with(model: genre) do |form| %>
+  <% if genre.errors.any? %>
+    <div style="color: red">
+      <h2>Foi encontrado <%= genre.errors.count%> erro: </h2>
+
+      <ul>
+        <% genre.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class='form-group'>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name, class: "dark-gray-5 form-control"%>
+  </div>
+
+  <div class="btn-right">
+    <%= link_to "Cancelar", genres_path, class: "btn cancel btn-right" %>
+    <%= form.submit "Salvar", class: "btn primary btn-right" do %>
+    <%= link_to genre_path %>
+    <% end %>
+  </div>
+<% end %>
